@@ -36,6 +36,7 @@ function nodeDetail(){
     const [selectedRow,setSelectRow] = useState([]);
     const [houseSouce,setHouseSouce] = useState('');
     const [paymentMethod,setPaymentMethod] = useState('');
+    const [paymentCode,setPaymentCode] = useState('');
     useEffect(()=>{
         getData()
     },[]);
@@ -114,9 +115,13 @@ function nodeDetail(){
     function changePaymentMethod(e){
         setPaymentMethod(e.target.value);
     }
+    function changePaymentCode(e){
+        setPaymentCode(e.target.value);
+    }
     function getData(){
         const data = {
             houseSouce,
+            paymentCode,
             paymentMethod
         }
         axios.post('http://localhost:3000/getPaymentList',{...data}).then((res) => {
@@ -130,6 +135,11 @@ function nodeDetail(){
                     <Col span={8} key="4" style={{ display:'block' }}>
                         <Form.Item label="房源">
                         <Input  value={houseSouce} onChange={changeHouseSource}/>
+                        </Form.Item>
+                    </Col>
+                    <Col span={8} key="6" style={{ display:'block' }}>
+                        <Form.Item label="付款代码">
+                        <Input value={paymentCode} onChange={changePaymentCode} />
                         </Form.Item>
                     </Col>
                     <Col span={8} key="5" style={{ display:'block' }}>
