@@ -1,0 +1,7 @@
+.clusterList{
+    width: 20%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 3px;
+    border-right: 2px solid #ddd;
+}
