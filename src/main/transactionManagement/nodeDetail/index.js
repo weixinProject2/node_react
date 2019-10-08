@@ -6,36 +6,44 @@ import axios from 'axios';
 import { Button, Table ,message ,Form ,  Row, Col,Input} from 'antd'
 
 import './index.css'
-const columns = [
-    {
-      title: '项目分期',
-      dataIndex: 'projectNum',
-      render: text => <a>{text}</a>,
-    },
-    {
-      title: '客户名称',
-      dataIndex: 'custormNames',
-    },
-    {
-      title: '房源',
-      dataIndex: 'houseSouce',
-    },
-    {
-        title: '付款代码',
-        dataIndex: 'paymentCode',
-    },
-    {
-        title: '付款方式',
-        dataIndex: 'paymentDesc',
-    },
-  ];
-
 function nodeDetail(){
     const [tableData,setTableData] = useState([]);
     const [disableSave,setDisableSave] = useState(true);
     const [selectedRow,setSelectRow] = useState([]);
     const [houseSouce,setHouseSouce] = useState('');
     const [paymentMethod,setPaymentMethod] = useState('');
+    const [paymentCode,setPaymentCode] = useState('');
+    const [count,setCount] = useState(0);
+    const [isDoublueClick,setIsDoublueClick] = useState(false);
+    const columns = [
+        {
+          title: '项目分期',
+          dataIndex: 'projectNum',
+          width:200,
+          render: text => <a>{text}</a>,
+        },
+        {
+          title: '客户名称',
+          dataIndex: 'custormNames',
+          width:200,
+          editAbled:false,
+        },
+        {
+          title: '房源',
+          width:200,
+          dataIndex: 'houseSouce',
+        },
+        {
+            title: '付款代码',
+            width:200,
+            dataIndex: 'paymentCode',
+        },
+        {
+            title: '付款方式',
+            dataIndex: 'paymentDesc',
+        },
+      ];
+    
     useEffect(()=>{
         getData()
     },[]);
@@ -81,15 +89,19 @@ function nodeDetail(){
             'paymentCode':paymentCode,
             'paymentDesc':paymentDesc,
         }
+        const countAdd = count +1;
+        setCount(countAdd);
         tableData.unshift(oneData);
         const newTableData = [...tableData];
         setDisableSave(false);
         setTableData(newTableData);
     }
     function saveData(){
-        const tablelist = tableData[0];
+        const tablelist = tableData.slice(0,count);
         axios.post('http://localhost:3000/createTableList',tablelist).then((res) => {
             message.success('保存成功',3);   
+            setCount(0)
+            setDisableSave(true);
             getData();
         })
     }
@@ -98,11 +110,11 @@ function nodeDetail(){
             message.error('请选择需要删除的数据',3);   
             return;
         }
-        const deleteData = selectedRow[0]
-        axios.post('http://localhost:3000/deleteTableList',deleteData).then((res) => {
+        axios.post('http://localhost:3000/deleteTableList',selectedRow).then((res) => {
             message.success('删除成功',3);   
             getData();
-            setSelectRow([]);
+            console.log(tableData);
+            // setSelectRow([]);
         })
     }
     function handleSearch(){
@@ -114,13 +126,24 @@ function nodeDetail(){
     function changePaymentMethod(e){
         setPaymentMethod(e.target.value);
     }
+    function changePaymentCode(e){
+        setPaymentCode(e.target.value);
+    }
+    function cusNameDoubleClick(){
+        setIsDoublueClick(true);
+    }
+    function getRowData(record){
+        console.log(record);
+    }
     function getData(){
         const data = {
             houseSouce,
+            paymentCode,
             paymentMethod
         }
         axios.post('http://localhost:3000/getPaymentList',{...data}).then((res) => {
             setTableData(res.data.list);
+            setIsDoublueClick(false);
         })
     }
     return (
@@ -130,6 +153,11 @@ function nodeDetail(){
                     <Col span={8} key="4" style={{ display:'block' }}>
                         <Form.Item label="房源">
                         <Input  value={houseSouce} onChange={changeHouseSource}/>
+                        </Form.Item>
+                    </Col>
+                    <Col span={8} key="6" style={{ display:'block' }}>
+                        <Form.Item label="付款代码">
+                        <Input value={paymentCode} onChange={changePaymentCode} />
                         </Form.Item>
                     </Col>
                     <Col span={8} key="5" style={{ display:'block' }}>
@@ -150,7 +178,22 @@ function nodeDetail(){
             <Button type="primary" disabled={disableSave} onClick={saveData} style={{marginRight:30}}>保存</Button>
             <Button type="primary" onClick={deleteData} style={{marginRight:30}}>删除</Button>
             <div className="table">
-                 <Table style={{marginTop:10}} rowKey={record =>record.id } scroll={{y: 350 }} rowSelection={rowSelection} columns={columns} dataSource={tableData} />
+                 <Table 
+                 onRow={(record,rowIndex) => {
+                    return {
+                      onClick: event => getRowData(record), // 点击行
+                      onDoubleClick: event => {},
+                      onContextMenu: event => {},
+                      onMouseEnter: event => {}, // 鼠标移入行
+                      onMouseLeave: event => {},
+                    };
+                  }}
+                 style={{marginTop:10}}
+                  rowKey={record =>record.id } 
+                  scroll={{y: 350 }} 
+                  rowSelection={rowSelection} 
+                  columns={columns}
+                   dataSource={tableData} />
             </div>
         </div>
     )

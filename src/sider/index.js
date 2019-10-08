@@ -90,6 +90,18 @@ function msSider(props){
             <Menu.Item key="9">面积补差</Menu.Item>
             <Menu.Item key="10">代收费用</Menu.Item>
           </SubMenu>
+          <SubMenu
+            key="sub4"
+            title={
+              <span>
+                <Icon type="appstore" />
+                <span>集群</span>
+              </span>
+            }
+          >
+            <Menu.Item key="11"><Link to="/clusterMangement/cluster">集群管理</Link> </Menu.Item>
+            <Menu.Item key="12"><Link to="/clusterMangement/certificate">证书管理</Link></Menu.Item>
+          </SubMenu>
         </Menu>
         </div>
       </div>

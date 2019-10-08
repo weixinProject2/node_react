@@ -1,0 +1,24 @@
+.clutserHeader {
+    width: 100%;
+    height: 90px;
+    line-height: 40px;
+    color: blue;
+    border-bottom: 2px solid #ddd; 
+} 
+.clutserHeader .custerSpan{
+    margin-right: 5%;
+}
+.clutserHeader span{
+    cursor: pointer;
+}
+.clutserHeader .anticon {
+    color: blue;
+}
+.breadcrumb {
+    height: 50px;
+    padding-top: 10px;
+    border-top:2px solid #ddd ;
+}
+.ant-breadcrumb{
+    font-size: 18px;
+}
