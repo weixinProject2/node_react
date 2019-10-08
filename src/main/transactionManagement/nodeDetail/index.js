@@ -113,6 +113,7 @@ function nodeDetail(){
         axios.post('http://localhost:3000/deleteTableList',selectedRow).then((res) => {
             message.success('删除成功',3);   
             getData();
+            console.log(tableData);
             // setSelectRow([]);
         })
     }

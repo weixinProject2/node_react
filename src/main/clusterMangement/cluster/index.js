@@ -1,8 +1,11 @@
 import React, { useContext, useEffect } from 'react'
+import { Route } from 'react-router-dom'
 import { observer } from 'mobx-react-lite'
 import { toJS } from 'mobx'
 
+import { ClusterStore } from './clusterStore'
 import ClusterList from './clusterList'
+import ClusterDeatil from './clusterDetail'
 
 import { MyContext } from '../routeStore'
 import './index.css'
@@ -11,11 +14,13 @@ function Clutser(props){
     const store = toJS(useContext(MyContext));
     useEffect(()=>{
         store.setRountName(path);
-    },[path,store])
+    },[])
     return (
         <div className="clusterDeatil">
-            <ClusterList />
-            
+            <ClusterStore>
+                <ClusterList props={props}/>
+                <Route path={`${path}/clusterDeatil`} component={ClusterDeatil}></Route>
+            </ClusterStore>
         </div>
     )
 }

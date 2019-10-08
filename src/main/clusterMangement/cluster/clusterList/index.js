@@ -1,12 +1,16 @@
 /* eslint-disable array-callback-return */
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useContext } from 'react';
+import {  } from 'react-router-dom'
+import { toJS } from 'mobx'
 import axios from 'axios'
 import { Menu,Input, Icon } from 'antd';
 
+import { MyContext } from '../clusterStore'
 import './index.css';
 const { SubMenu }  = Menu;
 const ClusterList= (props) =>{
+    const store = toJS(useContext(MyContext));
     const [rootSubmenuKeys,setRootSubmenuKeys] = useState([]);
     const [openkeys,setOpenKeys] = useState(['1']);
     const [nodeList,setNodeList] = useState([]);
@@ -18,6 +22,7 @@ const ClusterList= (props) =>{
             const data = res.data.data
             setNodeList(data);
             setrootSubmenuKeys(data);
+            store.setCluster(data[0]);
         })
     }
     function setrootSubmenuKeys(data){
@@ -34,6 +39,17 @@ const ClusterList= (props) =>{
         } else {
             setOpenKeys(lastOpenKey ? [lastOpenKey] : []);
         }
+    }
+    function subMenuClick(item){
+        const title = item.title;
+        store.setCluster(item);
+    //     props.props.history.push({
+    //         pathname:'/clusterMangement/cluster/clusterDeatil/',
+    //         query:{
+    //         title:title,
+    //     },
+    // });
+        props.props.history.push('/clusterMangement/cluster/clusterDeatil/'+`${title}`)
     }
     return (
         <div className="clusterList">
@@ -52,11 +68,12 @@ const ClusterList= (props) =>{
                       return (
                         <SubMenu
                         key={item.key}
-                            title={
-                                <span>
-                                <span>{item.title}</span>
-                                </span>
-                            }
+                        title={
+                            <span>
+                             <span>{item.title}</span>
+                            </span>
+                        }
+                        onTitleClick={()=>subMenuClick({...item})}
                         >
                             {
                                 item.children.map(items=>{
