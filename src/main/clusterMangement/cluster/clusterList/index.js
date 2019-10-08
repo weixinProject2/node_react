@@ -43,13 +43,8 @@ const ClusterList= (props) =>{
     function subMenuClick(item){
         const title = item.title;
         store.setCluster(item);
-    //     props.props.history.push({
-    //         pathname:'/clusterMangement/cluster/clusterDeatil/',
-    //         query:{
-    //         title:title,
-    //     },
-    // });
-        props.props.history.push('/clusterMangement/cluster/clusterDeatil/'+`${title}`)
+        const path = props.props.match.path;
+        props.props.history.push(`${path}/clusterDeatil/`+`${title}`)
     }
     return (
         <div className="clusterList">

@@ -1,10 +1,9 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Form, Input, Button, Icon,message } from 'antd';
 import axios from 'axios'
 
 function Login(props){
   const {getFieldDecorator} = props.form;
-  const login = props.login;
   const myLogin = function(e){
     e.preventDefault();
     props.form.validateFields((err, values) => {
@@ -16,8 +15,14 @@ function Login(props){
             message.warning("用户名或密码不正确");
             return;
           }
-          const {username,password} = res.data[0];
-          login(username,password);
+          const {userName,password,role} = res.data[0];
+          const userInfo = {
+            userName,
+            password,
+            role,
+          }
+          localStorage.setItem('userInfo',JSON.stringify(userInfo));
+          props.prop.history.replace('/manageSystem');
         })
         
       }

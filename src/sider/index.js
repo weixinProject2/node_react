@@ -40,13 +40,13 @@ function msSider(props){
           </SubMenu>
          
           <Menu.Item key="2">
-          <Link to="/houseManagement">
+          <Link to="/manageSystem/houseManagement">
             <Icon type="desktop" />
             <span>房源管理</span>
             </Link>
           </Menu.Item>
           <Menu.Item key="3">
-          <Link to="/transactionManagement">
+          <Link to="/manageSystem/transactionManagement">
             <Icon type="inbox" />
             <span>交易管理</span>
             </Link>
@@ -99,8 +99,8 @@ function msSider(props){
               </span>
             }
           >
-            <Menu.Item key="11"><Link to="/clusterMangement/cluster">集群管理</Link> </Menu.Item>
-            <Menu.Item key="12"><Link to="/clusterMangement/certificate">证书管理</Link></Menu.Item>
+            <Menu.Item key="11"><Link to="/manageSystem/clusterMangement/cluster">集群管理</Link> </Menu.Item>
+            <Menu.Item key="12"><Link to="/manageSystem/clusterMangement/certificate">证书管理</Link></Menu.Item>
           </SubMenu>
         </Menu>
         </div>

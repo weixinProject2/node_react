@@ -6,15 +6,14 @@ import HouseManagement from './houseManegement';
 import TransactionManagement from './transactionManagement';
 import ClusterMangement from './clusterMangement';
 
-
 function mainIndex(){
 
     return (
      <Fragment>
          <Switch>
-            <Route  path="/houseManageMent" component={HouseManagement} />
-            <Route  path="/transactionManagement" component={TransactionManagement} />
-            <Route  path="/clusterMangement" component={ClusterMangement} />
+            <Route  path="/manageSystem/houseManageMent"  component={HouseManagement} />
+            <Route  path="/manageSystem/transactionManagement" component={TransactionManagement} />
+            <Route  path="/manageSystem/clusterMangement" component={ClusterMangement} />
          </Switch>
      </Fragment>
     )
