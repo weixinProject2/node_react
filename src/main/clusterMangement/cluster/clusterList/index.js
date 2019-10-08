@@ -41,9 +41,9 @@ const ClusterList= (props) =>{
         }
     }
     function subMenuClick(item){
-        const title = item.title;
         store.setCluster(item);
         const path = props.props.match.path;
+        const title = item.children[0].sub
         props.props.history.push(`${path}/clusterDeatil/`+`${title}`)
     }
     return (
