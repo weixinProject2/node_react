@@ -8,7 +8,6 @@ import Certificate from './certificate'
 
 import './index.css'
 
-export const MyContext = React.createContext();
 
 function  ClusterMangement(props) {
     const path = props.match.path;

@@ -43,10 +43,10 @@ function Certificate(props){
                 <Tabs defaultActiveKey="1">
                     <TabPane tab="证书列表" key="1">
                         <Table dataSource={certificateData}>
-                            <Column title="证书名称" dataIndex="certificateName" render={(text,record)=>{
+                            <Column title="证书名称" dataIndex="certificate" render={(text,record)=>{
                                 return <div style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}><span>{text}</span> <Icon type="more"></Icon></div>
                             }}></Column>
-                            <Column title="域名地址" dataIndex="domainNameAddress"></Column>
+                            <Column title="域名地址" dataIndex="domainNameA"></Column>
                             <Column title="有效期" dataIndex="expiryDate" render={(text,record)=>{
                                 return '还剩'+getRestDays(text,record)+'天'
                             }}></Column>
@@ -58,7 +58,7 @@ function Certificate(props){
                                 return <div style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}><span>{text}</span> <Icon type="more" onClick={openDrawer}></Icon></div>
                             }}></Column>
                             <Column title="登录名" dataIndex="loginName"></Column>
-                            <Column title="项目角色" dataIndex="projectRoles"></Column>
+                            <Column title="项目角色" dataIndex="projectRole"></Column>
                             <Column title="添加时间" dataIndex="timeAdded"></Column>
                         </Table>
                     </TabPane>
