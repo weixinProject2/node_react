@@ -44,7 +44,7 @@ const ClusterAllocate = (props) =>{
         
     }
     function getData(){
-        axios.post('http://localhost:3000/cluster/getAllocationInfo').then(res=>{
+        axios.post('http://122.51.41.28:3000/cluster/getAllocationInfo').then(res=>{
             const list = res.data.list;
             setTableList(list);
     })

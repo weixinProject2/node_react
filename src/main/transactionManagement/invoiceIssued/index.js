@@ -10,7 +10,7 @@ function invoiceIssued(){
         getData();
     },[]);
     function getData(){
-        Axios.get('http://localhost:3000/getOrderList').then((res)=>{
+        Axios.get('http://122.51.41.28:3000/getOrderList').then((res)=>{
             setDataSource(res.data.list)
         })
     }
@@ -77,7 +77,7 @@ function invoiceIssued(){
     function saveRow(){
         console.log(addedData);
         Axios.post(
-            'http://localhost:3000/createOrderList',{
+            'http://122.51.41.28:3000/createOrderList',{
                 params:addedData
             }
         ).then((res)=>{
@@ -102,7 +102,7 @@ function invoiceIssued(){
            return;
        }
        Axios.post(
-           'http://localhost:3000/deleteOrderList',{
+           'http://122.51.41.28:3000/deleteOrderList',{
             params:deleteRows
            }
        ).then((res)=>{

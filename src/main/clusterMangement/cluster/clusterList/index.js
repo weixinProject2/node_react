@@ -71,7 +71,7 @@ const ClusterList= (props) =>{
         console.log(state);
     }
     function clusterNodeList(){
-        axios.post('http://localhost:3000/cluster/getNodeList').then(res=>{
+        axios.post('http://122.51.41.28:3000/cluster/getNodeList').then(res=>{
             const data = res.data.data
             console.log(data);
             setNodeList(data);
@@ -105,7 +105,7 @@ const ClusterList= (props) =>{
         props.props.history.push(`${path}/clusterDeatil/`+`${title}`)
     }
     function hanldeDeleteNode(id){
-        axios.post('http://localhost:3000/cluster/clusterDeleteNode',{nodeId:id}).then(() => {
+        axios.post('http://122.51.41.28:3000/cluster/clusterDeleteNode',{nodeId:id}).then(() => {
                 clusterNodeList();
                 console.log(nodeList);
                 nodeList.map(item=>{
