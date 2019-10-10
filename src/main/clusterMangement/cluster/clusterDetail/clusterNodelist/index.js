@@ -1,3 +1,5 @@
+
+/* eslint-disable no-restricted-globals */
 /* eslint-disable no-undef */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react'
@@ -63,13 +65,14 @@ const ClusterNodeList = (props)=>{
       const [tableList,setTableList] = useState([]);
       const [visible,setVisiable] = useState(false);
       useEffect(()=>{
-        getData();
-      },[])
-      const data = {
-          clusterName:'cluster1'
-        };
-      function getData(){
-        axios.post('http://localhost:3000/cluster/getNodeDetail',{...data}).then(res=>{
+        const clusterName = props.clustername; // cluster3
+        getData(clusterName);
+      },[props])
+      function getData(data){
+        const clusterName = {
+          'name':data
+        }
+        axios.post('http://localhost:3000/cluster/getNodeDetail',clusterName).then(res=>{
             setTableList(res.data.list)
         })  
       }

@@ -14,7 +14,7 @@ const ClusterHeader = (props) =>{
         <div className="clutserHeader">
             <span className="custerSpan"></span>
             <span className="custerSpan"> <Icon type="hdd" /> 创建集群</span>
-            <span className="custerSpan"> <Icon type="p`roperty-safety" /> 权限管理</span>
+            <span className="custerSpan"> <Icon type="property-safety" /> 权限管理</span>
             <span className="custerSpan"> <Icon type="reload" /> 刷新</span>
             <div className="breadcrumb">
                 <Breadcrumb separator=">">

@@ -2,3 +2,9 @@
     height: 57px;
     background-color: rgb(23,43,76);
 }
+.headerAvatar {
+    margin-top: 10px;
+    float: right;
+    cursor: pointer;
+    margin-right: 30px;
+}
