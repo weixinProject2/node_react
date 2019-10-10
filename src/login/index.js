@@ -8,7 +8,7 @@ function Login(props){
     e.preventDefault();
     props.form.validateFields((err, values) => {
       if (!err) {
-        axios.post('http://localhost:3000/getUser',{
+        axios.post('http://122.51.41.28:3000/getUser',{
           values:values
         }).then((res)=>{
           if(res.data.length===0){
