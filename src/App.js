@@ -6,7 +6,6 @@ import Main from './main'
 import Sider from './sider'
 import Login from './login'
 
-
 import './index.css';
 function MainView(props){
     return (

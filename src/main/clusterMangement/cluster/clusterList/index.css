@@ -4,7 +4,9 @@
     box-sizing: border-box;
     padding: 3px;
     border-right: 2px solid #ddd;
+
 }
 .clusterList .ant-menu-submenu-arrow{
     left : 10px;
 }
+

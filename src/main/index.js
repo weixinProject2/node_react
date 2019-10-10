@@ -5,7 +5,6 @@ import { withRouter, Route, Switch } from 'react-router-dom';
 import HouseManagement from './houseManegement';
 import TransactionManagement from './transactionManagement';
 import ClusterMangement from './clusterMangement';
-
 function mainIndex(){
 
     return (

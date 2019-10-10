@@ -1,3 +1,4 @@
+
 /* eslint-disable default-case */
 /* eslint-disable array-callback-return */
 /* eslint-disable react-hooks/exhaustive-deps */
@@ -7,15 +8,16 @@ import { toJS } from 'mobx'
 import axios from 'axios'
 import { Menu,Input, Icon,Popover,Button,Drawer,Popconfirm, message,List } from 'antd';
 
+
 import { MyContext } from '../clusterStore'
 import './index.css';
 const { SubMenu }  = Menu;
 const ClusterList= (props) =>{
-
     const store = toJS(useContext(MyContext));
     const [rootSubmenuKeys,setRootSubmenuKeys] = useState([]);
     const [openkeys,setOpenKeys] = useState(['1']);
     const [nodeList,setNodeList] = useState([]);
+
     const [stateDrawer,setStateDrawer] = useState(false);
     const [clusterId,setclusterId] = useState('');
     const init = {
@@ -93,6 +95,7 @@ const ClusterList= (props) =>{
         }
     }
     function subMenuClick(item){
+
         store.setCluster(item);
         const path = props.props.match.path;
         const title = item.children[0].sub
@@ -136,9 +139,11 @@ const ClusterList= (props) =>{
                         title={
                             <span>
                              <span>{item.title}</span>
+
                              <Popover placement="bottom" content={content} trigger='click'>
                                  <Icon style={{cursor: 'pointer', position: 'absolute',top: '30%',right:'10px'}} type="more" />
                             </Popover>,
+
                             </span>
                         }
                         onTitleClick={()=>subMenuClick({...item})}
@@ -155,6 +160,7 @@ const ClusterList= (props) =>{
                   })
               }
             </Menu>
+
             <Drawer
                 title={`修改集群 ------------ ${state.title}`}
                 placement="right"
@@ -182,6 +188,7 @@ const ClusterList= (props) =>{
                 <Button style={{ position:'absolute',bottom:'10px',left:'100px' }}>取消</Button>
             </Drawer>
         
+
         </div>
     )
 }
