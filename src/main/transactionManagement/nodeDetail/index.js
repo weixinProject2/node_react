@@ -98,7 +98,7 @@ function nodeDetail(){
     }
     function saveData(){
         const tablelist = tableData.slice(0,count);
-        axios.post('http://localhost:3000/createTableList',tablelist).then((res) => {
+        axios.post('http://122.51.41.28:3000/createTableList',tablelist).then((res) => {
             message.success('保存成功',3);   
             setCount(0)
             setDisableSave(true);
@@ -110,7 +110,7 @@ function nodeDetail(){
             message.error('请选择需要删除的数据',3);   
             return;
         }
-        axios.post('http://localhost:3000/deleteTableList',selectedRow).then((res) => {
+        axios.post('http://122.51.41.28:3000/deleteTableList',selectedRow).then((res) => {
             message.success('删除成功',3);   
             getData();
             console.log(tableData);
@@ -141,7 +141,7 @@ function nodeDetail(){
             paymentCode,
             paymentMethod
         }
-        axios.post('http://localhost:3000/getPaymentList',{...data}).then((res) => {
+        axios.post('http://122.51.41.28:3000/getPaymentList',{...data}).then((res) => {
             setTableData(res.data.list);
             setIsDoublueClick(false);
         })
