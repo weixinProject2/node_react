@@ -57,15 +57,41 @@ function msSider(props){
             title={
               <span>
                 <Icon type="mail" />
-                <span>财务管理</span>
+                <span>云就业中心</span>
               </span>
             }
             className="subMenu"
           >
-            <Menu.Item key="5">收款管理</Menu.Item>
-            <Menu.Item key="6">转款管理</Menu.Item>
-            <Menu.Item key="7">退款管理</Menu.Item>
-            <Menu.Item key="8">票据管理</Menu.Item>
+            <Menu.Item key="5">
+            <Link to='/manageSystem/cloudManagement/professionalAblility'>
+              职业能力慕课
+              </Link>
+              </Menu.Item>
+            <Menu.Item key="6">
+            <Link to='/manageSystem/cloudManagement/recruitmentInfor'>
+            招聘信息
+              </Link>
+              </Menu.Item>
+            <Menu.Item key="7">
+            <Link to='/manageSystem/cloudManagement/positionInvite'>
+              职位邀请
+            </Link>
+            </Menu.Item>
+            <Menu.Item key="8">
+            <Link to='/manageSystem/cloudManagement/resumeManagement'>
+              简历管理
+            </Link>
+            </Menu.Item>
+            <Menu.Item key="8.1">
+            <Link to='/manageSystem/cloudManagement/interviewMange'>
+              面试管理
+            </Link>
+            </Menu.Item>
+            <Menu.Item key="8.2">
+            <Link to='/manageSystem/cloudManagement/practiceManage'>
+              实习管理
+            </Link>
+            </Menu.Item>
             <SubMenu
             key="sub4"
             title={

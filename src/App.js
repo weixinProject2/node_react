@@ -29,8 +29,8 @@ function App(){
     return (
             <div className="Main">
                 <BrowserRouter>
-                   <Route path='/manageSystem' component={MainView}></Route>
-                   <Route path='/login' component={LoginView}></Route>
+                   <Route path='/' component={MainView}></Route>
+                   {/* <Route path='/login' component={LoginView}></Route> */}
                 </BrowserRouter>
             </div>
     )
