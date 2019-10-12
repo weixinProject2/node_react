@@ -36,7 +36,7 @@ function Certificate(props){
         setVisible(false)
     }
     function getData(){
-        axios.get("http://localhost:3000/cluster/getCertificateList").then((res)=>{
+        axios.get("http://122.51.41.28:3000/cluster/getCertificateList").then((res)=>{
             setcertificateData(res.data.list);
         });
         axios.get("http://122.51.41.28:3000/cluster/permissionAllocationList").then((res)=>{

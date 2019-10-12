@@ -5,11 +5,11 @@ import { Avatar,Popover,Button } from 'antd'
 import './index.css'
 
 function msHeader(props){
-    const [username,setUserName] = useState('');
-    useEffect(()=>{
-        const userInfo = JSON.parse(localStorage.getItem('userInfo'));
-        setUserName(userInfo.userName);
-    },[])
+    const [username,setUserName] = useState('3333');
+    // useEffect(()=>{
+    //     const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+    //     setUserName(userInfo.userName);
+    // },[])
     function exitLogin(){
         localStorage.clear();
         props.prop.history.replace('/login');
