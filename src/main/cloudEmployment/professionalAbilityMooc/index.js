@@ -24,7 +24,7 @@ const professionAbilityMooc = (props)=>{
         getData();
     },[])
     function getData(){
-        axios.post('http://localhost:3000/cloud/cloudGetMoocCourseDetail').then(res=>{
+        axios.post('http://122.51.41.28:3000/cloud/cloudGetMoocCourseDetail').then(res=>{
             setCourseData(res.data.list);
         })
     }
