@@ -2,7 +2,9 @@
     width: 100%;
     padding-top: 30px;
     padding-left: 40px;
+    overflow-y: scroll;
     padding-right: 40px; 
+    padding-bottom: 20px;
 }
 
 .moccHeadTitle {

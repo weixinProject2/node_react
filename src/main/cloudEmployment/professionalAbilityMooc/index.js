@@ -4,6 +4,7 @@ import { Input, List,Card } from 'antd';
 import axios from 'axios';
 
 import './index.css';
+import { async } from 'q';
 const { Search } = Input;
 const { Meta } = Card;
 const data = [
@@ -19,13 +20,21 @@ const data = [
     textAlign: 'center',
   };
 const professionAbilityMooc = (props)=>{
-    const [courseData,setCourseData] = useState([]);
+    const randomData =(max)=>{
+        return  Math.floor(Math.random() * max) ;
+    }
+    let randomData1 = 0;
+    const [showCourseData1,setShowCourseData] = useState([]);
+    const [showCourseData2,setShowCourseData2] = useState([]);
     useEffect(()=>{
-        getData();
+        getData('IT');
     },[])
-    function getData(){
-        axios.post('http://122.51.41.28:3000/cloud/cloudGetMoocCourseDetail').then(res=>{
-            setCourseData(res.data.list);
+    function getData(param = ''){
+        axios.post('http://localhost:3000/cloud/cloudGetMoocCourseDetail',{
+            category:param
+        }).then(res=>{
+            randomData1 = randomData(res.data.list.length -6);
+            setShowCourseData(res.data.list.slice(randomData1,randomData1+6));
         })
     }
     return (
@@ -51,7 +60,52 @@ const professionAbilityMooc = (props)=>{
                 <div className="moocCourseDatail">
                 <Card size="small" className="moocCourseCrad">
                     {
-                        courseData.map(item=>{
+                        showCourseData1.map(item=>{
+                            return (
+                             <Card.Grid 
+                              style={gridStyle} 
+                               >
+                                   <a href={item.courseAddress}>
+                                   <Card
+                                   style={{ width:220 }}
+                                      cover={<img alt="example" src={item.moocImage} />}
+                                   >
+                                    <Meta title={item.courseName} />
+                                   </Card>
+                                   </a>
+                            </Card.Grid>
+                            )
+                        })
+                    }
+                </Card>
+                </div>
+            <div className="moocFooter">
+                IT·互联网
+            </div>
+            </div>
+            </div>
+            <div>
+            <div className="moccHeadTitle">
+                云就业职业能力慕课
+                <Search className="moocHeadSearch" placeholder="请输入课程名称" onSearch={value => console.log(value)} enterButton />
+            </div>
+            <div className="moocHeadList">
+                {/* <div className="moocKindList">
+                   <List
+                    bordered
+                    dataSource={data}
+                    renderItem={item => (
+                        <List.Item>
+                          {item}
+                        </List.Item>
+                      )}
+                   >
+                   </List>
+                </div> */}
+                <div className="moocCourseDatail">
+                <Card size="small" className="moocCourseCrad">
+                    {
+                        showCourseData1.map(item=>{
                             return (
                              <Card.Grid 
                               style={gridStyle} 

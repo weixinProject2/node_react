@@ -1,0 +1,93 @@
+.resumenMain {
+    width: 100%;
+    height: 100%;
+    padding: 20px;   
+    overflow-y: scroll;
+}
+.resumenMain ul{
+    list-style: none;
+}
+.objective {
+    width: 100%;
+    margin-bottom: 40px;
+}
+.objective_head {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    border-left: 3px solid green;
+    padding-left: 30px;
+    font-size: 18px;
+}
+.objective ul {
+    width: 100%;
+    border: 1px solid #ccc;
+}
+.objective li {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    box-sizing: border-box;
+    padding-left: 100px;
+    padding-right:10px;
+    justify-content: space-between;
+    line-height: 50px;
+    border-bottom: 1px dotted #ccc;
+    text-align: center;
+}
+.objective li p span {
+    color:red;
+    margin-right: 5px;
+}
+.objective_input {
+    margin-top: 9px;
+    width: 92%;
+}
+.resumeCompletion {
+    height: 20px;
+    text-align: center;
+    font-size: 13px;
+    line-height: 20px;
+    border-radius: 3px;
+    color:#fff;
+    font-weight: 600;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-right: 10px;
+    background-color: orange;
+}
+.objective .uploadHead {
+    justify-content: left;
+    height: 120px;
+    line-height: 120px;
+}
+.avatar-uploader {
+    margin-top: 10px;
+}
+.objective .choiceSex {
+    justify-content: left;
+}
+.objective .detailInstructions {
+    height: 140px;
+    box-sizing: border-box;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    line-height: 120px;
+}
+.project .projectExperience {
+    border: 1px solid #ccc;
+    width: 100%;
+    padding: 20px;
+}
+
+ .projectForm {
+    margin-bottom:0 !important;
+}
+.resumeSave {
+    margin-top: 20px;
+    width: 100%;
+    text-align: center;
+}
